@@ -1,0 +1,22 @@
+.gameFace {
+  flex: auto;
+  justify-content: center;
+}
+.form {
+  display: inline-block;
+  width: 60%;
+  min-height: 200px;
+  background-color: antiquewhite;
+}
+.keepScore {
+  display: inline-block;
+  width: 60%;
+  min-height: 80px;
+}
+body {
+  text-align: center;
+}
+.lastResult {
+  color: white;
+  padding: 3px;
+}
