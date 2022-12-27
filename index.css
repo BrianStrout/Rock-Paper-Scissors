@@ -1,20 +1,143 @@
-.gameFace {
-  flex: auto;
-  justify-content: center;
+:root {
+  --grey: #d7cec7;
+  --tan: #c09f80;
+  --red: #76323f;
+  --blackboard: #565656;
+  --backyard: linear-gradient(hotpink, limegreen);
+  --light-grey: rgb(183, 183, 183);
 }
-.form {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+.body {
+  background: var(--backyard);
+}
+
+.gameContainer {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--backyard);
+  /* grid-template-columns: 1fr 4fr 1fr; */
+}
+
+.gameFace {
+  display: grid;
+  grid-template-rows: 1fr 2fr 5fr;
+  width: 95vw;
+  height: 95vh;
+  background-color: var(--light-grey);
+  /* padding-left: 5%;
+  padding-right: 5%; */
+  align-items: baseline;
+  border: 5px solid black;
+  border-radius: 10px;
+}
+.titleTrack {
+  position: relative;
+  width: 100%;
+  /* background-color: blue; */
+  height: 80px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: #76323f;
+}
+.titleTrack > h1 {
+  margin: 0;
   display: inline-block;
-  width: 60%;
-  min-height: 200px;
-  background-color: antiquewhite;
+}
+#subTitle {
+  position: absolute;
+  bottom: 0;
+
+  right: 0;
+  margin: 0;
+}
+
+.monitor {
+  background-color: var(--blackboard);
+  width: 100%;
+  /* height: 85vw; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.screen {
+  position: relative;
+  width: 90vw;
+  height: 90vw;
+}
+
+#p1HealthBox,
+#compHealthBox {
+  position: absolute;
+  top: 2px;
+  height: 5%;
+  width: 45%;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+#p1HealthBox {
+  left: 2px;
+  justify-content: flex-start;
+}
+#p1HealthBar {
+  background-color: green;
+  height: 50%;
+  width: 100%;
+  /* margin-right: 5%;
+  margin-left: 5%; */
+}
+#compHealthBox {
+  right: 2px;
+  justify-content: flex-end;
+}
+#compHealthBar {
+  background-color: green;
+  height: 50%;
+  width: 100%;
+}
+
+.console {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 100%;
+  background-color: darkseagreen;
+}
+.controller {
+  background-color: brown;
+  width: 100%;
+  padding-top: 10%;
+}
+.whatsUp {
+  /* width: 40%; */
+}
+.flexScore {
+  display: inline-block;
+  justify-content: center;
+  gap: 10px;
 }
 .keepScore {
   display: inline-block;
-  width: 60%;
-  min-height: 80px;
+  /* width: 40%; */
+  /* min-height: 80px; */
 }
-body {
+.decl {
   text-align: center;
+  font-family: fantasy;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 .lastResult {
   color: white;

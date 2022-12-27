@@ -4,40 +4,64 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rock Paper and/or Scissors</title>
+    <link rel="stylesheet" href="./index.css" />
   </head>
-
   <body>
-    <div class="gameFace">
-      <div class="form">
+    <div class="gameContainer">
+      <div class="gameFace">
+        <div class="titleTrack">
+          <h1>Rock, Paper, Scissors?</h1>
+          <h4 id="subTitle">....Make Your Move:</h4>
+        </div>
+        <div class="monitor">
+          <div class="screen">
+            <div id="p1HealthBox">
+              <div id="p1HealthBar"></div>
+            </div>
+            <div id="compHealthBox">
+              <div id="compHealthBar"></div>
+            </div>
+            <div id="compHealth"></div>
+          </div>
+        </div>
+        <div class="console">
+          <div class="controller">
+            <div class="buttons">
+              <button class="userBut" id="rock">Rock!</button>
+              <button class="userBut" id="paper">Paper!</button>
+              <button class="userBut" id="scissors">Scissors!</button>
+            </div>
+            <div style="margin-top: 20px">
+              <input
+                type="submit"
+                value="RESET"
+                class="resetButton"
+                onclick="resetter();"
+              />
+            </div>
+          </div>
+          <!---->
+          <div class="flexScore">
+            <div class="whatsUp">
+              <p class="lastResult"></p>
+            </div>
+            <div class="keepScore">
+              <p class="score"></p>
+              <p class="round"></p>
+            </div>
+          </div>
+          <!--flexscore-->
+          <div class="decl">
+            <p class="declare"></p>
+          </div>
+        </div>
         <div>
-          <label for="guessField"
-            >Rock, Paper, Scissors....Make Your Move: </label
-          ><input type="text" id="guessField" class="guessField" />
-          <input
-            type="submit"
-            value="Submit guess"
-            class="guessSubmit"
-            onclick="round();"
-          />
+          <!--make results-->
         </div>
-        <div style="margin-top: 20px">
-          <input
-            type="submit"
-            value="RESET"
-            class="resetButton"
-            onclick="resetter();"
-          />
-        </div>
-      </div>
-
-      <!--make results-->
-      <div class="keepScore">
-        <p class="lastResult"></p>
-        <p class="score"></p>
-        <p class="round"></p>
-        <p class="declare"></p>
       </div>
     </div>
   </body>
+  <!--JAVASCRIPT-->
+  <script src="./index.js"></script>
 </html>
