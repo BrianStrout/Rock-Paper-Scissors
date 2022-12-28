@@ -74,6 +74,9 @@
   position: relative;
   width: 90vw;
   height: 90vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 #p1HealthBox,
@@ -106,6 +109,37 @@
   background-color: green;
   height: 50%;
   width: 100%;
+}
+
+.fightStage {
+  position: relative;
+  margin-top: 10%;
+  /* background-color: rgba(240, 248, 255, 0.534); */
+  width: 90%;
+  height: 90%;
+  border: 1px solid burlywood;
+  /* bottom: 0; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.player1Avatar {
+  margin-left: auto;
+  width: 80%;
+  height: 80%;
+  background-color: #76323f69;
+}
+.player1AvatarHurt {
+  margin-right: auto;
+}
+
+.computerAvatar {
+  margin-right: auto;
+  width: 80%;
+  height: 80%;
+  background-color: #3c327669;
+}
+.computerAvatarHurt {
+  margin-left: auto;
 }
 
 .console {
