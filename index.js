@@ -135,7 +135,7 @@ function updateHealth(winner) {
       cHealth = cHealth - 25;
       console.log(cHealth);
       compHealthBar.style.width = `${cHealth}%`;
-      computerAvatar.classList.add("player1AvatarHurt");
+      computerAvatar.classList.add("computerAvatarHurt");
       break;
     //  flash compueter
 
@@ -154,12 +154,12 @@ function updateHealth(winner) {
     setTimeout(() => {
       player1Avatar.classList.remove("player1Attack");
       computerAvatar.classList.remove("computerAttack");
-    }, 2500);
+    }, 1400);
 
     setTimeout(() => {
       goAgain();
-      player1Avatar.classList.remove("player1Attack");
-      computerAvatar.classList.remove("computerAttack");
+      // player1Avatar.classList.remove("player1Attack");
+      // computerAvatar.classList.remove("computerAttack");
     }, 3000);
   }
 }
@@ -172,6 +172,7 @@ function goAgain() {
   dictateHeader.classList.add("dictateOFFSCREEN");
   setTimeout(() => {
     player1Avatar.classList.remove("player1AvatarHurt");
+    computerAvatar.classList.remove("computerAvatarHurt");
     dictateHeader.classList.remove("dictateDance");
   }, 50);
   ready = true;
