@@ -14,6 +14,8 @@ const p1HealthBar = document.getElementById("p1HealthBar");
 const compHealthBar = document.getElementById("compHealthBar");
 const player1Avatar = document.getElementById("player1Avatar");
 const computerAvatar = document.getElementById("computerAvatar");
+const winnerDiv = document.getElementById("winnerDiv");
+const loserDiv = document.getElementById("loserDiv");
 
 let pScore = 0;
 let pHealth = 100;
@@ -148,39 +150,48 @@ function updateHealth(winner) {
     // flash player
   }
 
-  if (pHealth === 0 || cHealth === 0) {
-    declareWinner();
-  } else {
-    setTimeout(() => {
-      player1Avatar.classList.remove("player1Attack");
-      computerAvatar.classList.remove("computerAttack");
-    }, 1400);
+  setTimeout(() => {
+    player1Avatar.classList.remove("player1Attack");
+    computerAvatar.classList.remove("computerAttack");
+    player1Avatar.classList.remove("player1AvatarHurt");
+    computerAvatar.classList.remove("computerAvatarHurt");
+  }, 1400);
 
-    setTimeout(() => {
-      goAgain();
-      // player1Avatar.classList.remove("player1Attack");
-      // computerAvatar.classList.remove("computerAttack");
-    }, 3000);
-  }
+  setTimeout(() => {
+    goAgain();
+    // player1Avatar.classList.remove("player1Attack");
+    // computerAvatar.classList.remove("computerAttack");
+  }, 3000);
 }
 
 function goAgain() {
-  player1Avatar.classList.remove("player1Attack");
-  computerAvatar.classList.remove("computerAttack");
+  // player1Avatar.classList.remove("player1Attack");
+  // computerAvatar.classList.remove("computerAttack");
   console.log("going again..");
 
   dictateHeader.classList.add("dictateOFFSCREEN");
   setTimeout(() => {
-    player1Avatar.classList.remove("player1AvatarHurt");
-    computerAvatar.classList.remove("computerAvatarHurt");
     dictateHeader.classList.remove("dictateDance");
   }, 50);
-  ready = true;
+
+  if (pHealth === 0 || cHealth === 0) {
+    declareWinner();
+  } else {
+    ready = true;
+  }
 }
 
 function declareWinner() {
   ready = false;
-  alert("game over");
+
+  if (pHealth === 0) {
+    loserDiv.classList.add("gameOverSlip");
+  } else if (cHealth === 0) {
+    winnerDiv.classList.add("gameOverSlip");
+  } else {
+    console.log("error");
+    return;
+  }
 }
 
 function preBattle(playerSelection, computerSelection) {

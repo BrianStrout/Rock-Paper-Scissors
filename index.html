@@ -16,6 +16,9 @@
         </div>
         <div class="monitor">
           <div class="screen">
+            <div id="winnerDiv" class="winnerDiv">WIN!</div>
+            <div id="loserDiv" class="loserDiv">Lose!</div>
+
             <div id="p1HealthBox">
               <div id="p1HealthBar"></div>
             </div>
@@ -27,27 +30,32 @@
               <div class="dictate">
                 <h1 id="dictateHeader" class="dictateOFFSCREEN"></h1>
               </div>
-              <div class="player1Avatar"></div>
-              <div class="computerAvatar"></div>
+              <div id="player1Avatar" class="player1Avatar"></div>
+              <div id="computerAvatar" class="computerAvatar"></div>
             </div>
           </div>
         </div>
         <div class="console">
-          <div class="controller">
-            <div class="buttons">
-              <button class="userBut" id="rock">Rock!</button>
-              <button class="userBut" id="paper">Paper!</button>
-              <button class="userBut" id="scissors">Scissors!</button>
-            </div>
-            <div style="margin-top: 20px">
-              <input
-                type="submit"
-                value="RESET"
-                class="resetButton"
-                onclick="resetter();"
-              />
-            </div>
+          <div class="roundContainer">
+            <p class="round"></p>
           </div>
+          <div class="controller">
+            <!-- <div class="buttons"> -->
+            <button class="userBut" id="rock"><h6>Rock!</h6></button>
+            <button class="userBut" id="paper"><h6>Paper!</h6></button>
+            <button class="userBut" id="scissors"><h6>Scissors!</h6></button>
+            <!-- </div> -->
+          </div>
+
+          <div style="margin-top: 20px">
+            <input
+              type="submit"
+              value="RESET"
+              class="resetButton"
+              onclick="resetter();"
+            />
+          </div>
+
           <!---->
           <div class="flexScore">
             <div class="whatsUp">
@@ -55,7 +63,6 @@
             </div>
             <div class="keepScore">
               <p class="score"></p>
-              <p class="round"></p>
             </div>
           </div>
           <!--flexscore-->
