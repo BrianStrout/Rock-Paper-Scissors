@@ -7,6 +7,12 @@
   --blackboard: #565656;
   --backyard: linear-gradient(hotpink, limegreen);
   --light-grey: rgb(183, 183, 183);
+
+  --coolorG-dark: #264653;
+  --cooloG-light: #2a9d8f;
+  --coolorOY-dark: #f4a261;
+  --coolorOY-light: #e9c46a;
+  --coolorR: #e76f51;
 }
 * {
   margin: 0;
