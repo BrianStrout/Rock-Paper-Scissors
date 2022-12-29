@@ -8,7 +8,7 @@ const lastResult = document.querySelector(".lastResult");
 const scoreBoard = document.querySelector(".score");
 const roundBoard = document.querySelector(".round");
 const declare = document.querySelector(".declare");
-const reset = document.querySelector(".reset");
+
 const dictateHeader = document.getElementById("dictateHeader");
 const p1HealthBar = document.getElementById("p1HealthBar");
 const compHealthBar = document.getElementById("compHealthBar");
@@ -16,6 +16,7 @@ const player1Avatar = document.getElementById("player1Avatar");
 const computerAvatar = document.getElementById("computerAvatar");
 const winnerDiv = document.getElementById("winnerDiv");
 const loserDiv = document.getElementById("loserDiv");
+const resetBut = document.getElementById("r");
 
 let pScore = 0;
 let pHealth = 100;
@@ -26,15 +27,12 @@ let validThrow = true;
 let ready = true;
 
 function resetter() {
-  console.log("reset activated");
-  pScore = 0;
-  cScore = 0;
-  roundCount = 1;
-  lastResult.textContent = "";
-  lastResult.style.backgroundColor = "transparent";
-  scoreBoard.textContent = ``;
-  scoreBoard.style.backgroundColor = "white";
-  roundBoard.textContent = ``;
+  // console.log("reset activated");
+  roundBoard.textContent = `Back for more!`;
+  p1HealthBar.style.width = "100%";
+  compHealthBar.style.width = "100%";
+  pHealth = 100;
+  cHealth = 100;
 }
 
 function adjust(raw) {
@@ -168,16 +166,15 @@ function goAgain() {
   // player1Avatar.classList.remove("player1Attack");
   // computerAvatar.classList.remove("computerAttack");
   console.log("going again..");
-
-  dictateHeader.classList.add("dictateOFFSCREEN");
-  setTimeout(() => {
-    dictateHeader.classList.remove("dictateDance");
-  }, 50);
-
   if (pHealth === 0 || cHealth === 0) {
     declareWinner();
   } else {
     ready = true;
+
+    dictateHeader.classList.add("dictateOFFSCREEN");
+    setTimeout(() => {
+      dictateHeader.classList.remove("dictateDance");
+    }, 50);
   }
 }
 
@@ -279,4 +276,9 @@ scissors.addEventListener("click", function () {
   } else {
     return;
   }
+});
+
+resetBut.addEventListener("click", () => {
+  // console.log("c");
+  resetter();
 });
