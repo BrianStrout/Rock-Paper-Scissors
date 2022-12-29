@@ -128,9 +128,10 @@
 }
 .dictate {
   position: absolute;
+  z-index: 10;
   width: 100%;
   height: 100%;
-  background-color: purple;
+  /* background-color: purple; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,7 +142,7 @@
   transition: transform 0.4s ease-out;
 }
 .dictateDance {
-  animation: dictateWobble 1.5s linear 0.45s 1 forwards;
+  animation: dictateWobble 1.5s linear 0.45s forwards;
 }
 @keyframes dictateWobble {
   0% {
@@ -173,6 +174,7 @@
   }
   100% {
     opacity: 0;
+    transform: translate(-100vw, 0px);
   }
 }
 
@@ -180,64 +182,110 @@
   transform: translateX(-100vw);
 }
 
-.player1Avatar,
-.computer1Avatar {
+#player1Avatar,
+#computerAvatar {
   width: 80%;
   height: 80%;
 }
 .player1Avatar {
   margin-left: auto;
   background-color: #76323f69;
+  transform: translateX(-100vw);
+  transition: transform 0.25s ease-out;
 }
+.player1Attack {
+  transform: translateX(0vw);
+}
+
 .player1AvatarHurt {
   margin-right: auto;
+  animation: hurtandshake 1s linear 1;
 }
 
 .computerAvatar {
   margin-right: auto;
-  background-color: #3c327669;
+  background-color: white;
+  transform: translateX(100vw);
+  transition: transform 0.25s ease-out;
+}
+.computerAttack {
+  transform: translateX(0vw);
 }
 .computerAvatarHurt {
   margin-left: auto;
+  animation: hurtandshake 2s linear;
 }
 
 @keyframes hurtandshake {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(0deg) scale(100%) translate(0px, 0px);
   }
-  25% {
-    transform: rotate(10deg);
+  8% {
+    transform: rotate(10deg) scale(95%) translate(-5px, -10px);
   }
-  50% {
-    transform: rotate(0deg);
+  16% {
+    transform: rotate(0deg) scale(90%) translate(-10px, -20px);
   }
-  75% {
-    transform: rotate(-10deg);
+  24% {
+    transform: rotate(-10deg) scale(80%) translate(-15px, -30px);
   }
+  32% {
+    transform: rotate(0deg) scale(75%) translate(-20px, -40px);
+  }
+  40% {
+    transform: rotate(10deg) scale(75%) translate(-20px, -40px);
+  }
+  48% {
+    transform: rotate(0deg) scale(75%) translate(-20px, -40px);
+  }
+  56% {
+    transform: rotate(-10deg) scale(75%) translate(-20px, -40px);
+  }
+  64% {
+    transform: rotate(0deg) scale(75%) translate(-20px, -40px);
+  }
+
   100% {
-    transform: rotate(0deg);
+    transform: rotate(0deg) scale(75%) translate(-20px, -40px);
   }
 }
 
 .console {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 100%;
+  grid-template-rows: 1rem 100px auto;
   width: 100%;
   background-color: darkseagreen;
 }
 .controller {
-  background-color: brown;
+  /* background-color: brown; */
   width: 100%;
-  padding-top: 10%;
+  /* padding-top: 10%; */
+  display: flex;
+
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
+.roundContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userBut {
+  height: 100px;
+  width: 100px;
+}
+
 .whatsUp {
   /* width: 40%; */
 }
 .flexScore {
-  display: inline-block;
-  justify-content: center;
-  gap: 10px;
+  /* display: inline-block; */
+  /* justify-content: center; */
+  /* gap: 10px; */
 }
 .keepScore {
   display: inline-block;
@@ -247,8 +295,8 @@
 .decl {
   text-align: center;
   font-family: fantasy;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  /* grid-column-start: 1;
+  grid-column-end: 3; */
 }
 .lastResult {
   color: white;

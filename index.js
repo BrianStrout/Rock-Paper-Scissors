@@ -12,6 +12,9 @@ const reset = document.querySelector(".reset");
 const dictateHeader = document.getElementById("dictateHeader");
 const p1HealthBar = document.getElementById("p1HealthBar");
 const compHealthBar = document.getElementById("compHealthBar");
+const player1Avatar = document.getElementById("player1Avatar");
+const computerAvatar = document.getElementById("computerAvatar");
+
 let pScore = 0;
 let pHealth = 100;
 let cHealth = 100;
@@ -76,9 +79,14 @@ function computerPlay() {
 }
 function dressAndGoPlayer(outfit) {
   console.log("dressed up as" + outfit);
+
+  player1Avatar.style.backgroundImage = "url('images/temprock.jpg')";
+  player1Avatar.classList.add("player1Attack");
 }
 function dressAndGoComputer(outfit) {
-  return;
+  // computerAvatar
+  computerAvatar.style.backgroundImage = "url('images/tempcomr.jpg')";
+  computerAvatar.classList.add("computerAttack");
 }
 function delegateDamage(winner) {
   setDictate(winner);
@@ -99,17 +107,23 @@ function setDictate(winner) {
       break;
   }
 
-  japanimation(winner);
+  dictate(winner);
 }
-function dictate() {
-  dictateHeader.classList.remove("dictateOFFSCREEN");
-  dictateHeader.classList.add("dictateDance");
+function dictate(winner) {
+  setTimeout(() => {
+    dictateHeader.classList.remove("dictateOFFSCREEN");
+    dictateHeader.classList.add("dictateDance");
+  }, 500);
+
+  setTimeout(() => {
+    japanimation(winner);
+  }, 1000);
 }
 
 function japanimation(winner) {
   updateHealth(winner);
 
-  dictate();
+  // dictate();
 }
 function updateHealth(winner) {
   switch (winner) {
@@ -121,6 +135,7 @@ function updateHealth(winner) {
       cHealth = cHealth - 25;
       console.log(cHealth);
       compHealthBar.style.width = `${cHealth}%`;
+      computerAvatar.classList.add("player1AvatarHurt");
       break;
     //  flash compueter
 
@@ -128,32 +143,58 @@ function updateHealth(winner) {
       pHealth = pHealth - 25;
       console.log(pHealth);
       p1HealthBar.style.width = `${pHealth}%`;
+      player1Avatar.classList.add("player1AvatarHurt");
       break;
     // flash player
   }
 
-  setTimeout(() => {
-    goAgain();
-  }, 2000);
+  if (pHealth === 0 || cHealth === 0) {
+    declareWinner();
+  } else {
+    setTimeout(() => {
+      player1Avatar.classList.remove("player1Attack");
+      computerAvatar.classList.remove("computerAttack");
+    }, 2500);
+
+    setTimeout(() => {
+      goAgain();
+      player1Avatar.classList.remove("player1Attack");
+      computerAvatar.classList.remove("computerAttack");
+    }, 3000);
+  }
 }
 
 function goAgain() {
+  player1Avatar.classList.remove("player1Attack");
+  computerAvatar.classList.remove("computerAttack");
   console.log("going again..");
 
   dictateHeader.classList.add("dictateOFFSCREEN");
-  dictateHeader.classList.remove("dictateDance");
+  setTimeout(() => {
+    player1Avatar.classList.remove("player1AvatarHurt");
+    dictateHeader.classList.remove("dictateDance");
+  }, 50);
   ready = true;
+}
+
+function declareWinner() {
+  ready = false;
+  alert("game over");
 }
 
 function preBattle(playerSelection, computerSelection) {
   ready = false;
   dressAndGoPlayer(playerSelection);
-  dressAndGoComputer(computerSelection);
-  battle(playerSelection, computerSelection);
+  setTimeout(() => {
+    dressAndGoComputer(computerSelection);
+  }, 500);
+  setTimeout(() => {
+    battle(playerSelection, computerSelection);
+  }, 500);
 }
 function battle(playerSelection, computerSelection) {
   let verdict = "";
-  roundBoard.textContent = `the round is ${roundCount}`;
+  roundBoard.textContent = `Round: ${roundCount}!`;
   if (roundCount >= 15) {
     if (pScore > cScore) {
       declare.textContent = `you win!`;
@@ -227,155 +268,3 @@ scissors.addEventListener("click", function () {
     return;
   }
 });
-
-// if (playerSelection === "rock" && computerSelection === "rock") {
-//   verdict = "TIE! Try again!";
-//   console.log(verdict);
-//   lastResult.textContent = "TIE! Try again!";
-//   lastResult.style.backgroundColor = "orange";
-//   scoreBoard.textContent = `The score is PLAYER : ${pScore} & COMPUTER: ${cScore}`;
-//   if (pScore === cScore) {
-//     scoreBoard.style.backgroundColor = "orange";
-//   }
-//   if (pScore > cScore) {
-//     scoreBoard.style.backgroundColor = "green";
-//   }
-//   if (pScore < cScore) {
-//     scoreBoard.style.backgroundColor = "red";
-//   }
-// } else if (playerSelection === "rock" && computerSelection === "paper") {
-//   verdict = "You lose! You threw rock and the computer threw paper";
-//   console.log(verdict);
-//   cScore++;
-//   lastResult.textContent =
-//     "You lose! You threw rock and the computer threw paper";
-//   lastResult.style.backgroundColor = "red";
-//   scoreBoard.textContent = `The score is PLAYER : ${pScore} & COMPUTER: ${cScore}`;
-//   if (pScore === cScore) {
-//     scoreBoard.style.backgroundColor = "orange";
-//   }
-//   if (pScore > cScore) {
-//     scoreBoard.style.backgroundColor = "green";
-//   }
-//   if (pScore < cScore) {
-//     scoreBoard.style.backgroundColor = "red";
-//   }
-// } else if (playerSelection === "rock" && computerSelection === "scissors") {
-//   verdict = "You win! You threw rock and the computer threw scissors";
-//   console.log(verdict);
-//   pScore++;
-//   lastResult.textContent =
-//     "You win! You threw rock and the computer threw scissors";
-//   lastResult.style.backgroundColor = "green";
-//   scoreBoard.textContent = `The score is PLAYER : ${pScore} & COMPUTER: ${cScore}`;
-//   if (pScore === cScore) {
-//     scoreBoard.style.backgroundColor = "orange";
-//   }
-//   if (pScore > cScore) {
-//     scoreBoard.style.backgroundColor = "green";
-//   }
-//   if (pScore < cScore) {
-//     scoreBoard.style.backgroundColor = "red";
-//   }
-
-//   //paper
-// } else if (playerSelection === "paper" && computerSelection === "paper") {
-//   verdict = "TIE! Try again!";
-//   console.log(verdict);
-//   lastResult.textContent = "TIE! Try again!";
-//   lastResult.style.backgroundColor = "orange";
-//   scoreBoard.textContent = `The score is PLAYER : ${pScore} & COMPUTER: ${cScore}`;
-//   if (pScore === cScore) {
-//     scoreBoard.style.backgroundColor = "orange";
-//   }
-//   if (pScore > cScore) {
-//     scoreBoard.style.backgroundColor = "green";
-//   }
-//   if (pScore < cScore) {
-//     scoreBoard.style.backgroundColor = "red";
-//   }
-// } else if (playerSelection === "paper" && computerSelection === "scissors") {
-//   verdict = "You lose! You threw paper and the computer threw scissors";
-//   console.log(verdict);
-//   cScore++;
-//   lastResult.textContent =
-//     "You lose! You threw paper and the computer threw scissors";
-//   lastResult.style.backgroundColor = "red";
-//   if (pScore === cScore) {
-//     scoreBoard.style.backgroundColor = "orange";
-//   }
-//   if (pScore > cScore) {
-//     scoreBoard.style.backgroundColor = "green";
-//   }
-//   if (pScore < cScore) {
-//     scoreBoard.style.backgroundColor = "red";
-//   }
-// } else if (playerSelection === "paper" && computerSelection === "rock") {
-//   verdict = "You win! You threw paper and the computer threw rock";
-//   console.log(verdict);
-//   pScore++;
-//   lastResult.textContent =
-//     "You win! You threw paper and the computer threw rock";
-//   lastResult.style.backgroundColor = "green";
-//   scoreBoard.textContent = `The score is PLAYER : ${pScore} & COMPUTER: ${cScore}`;
-//   if (pScore === cScore) {
-//     scoreBoard.style.backgroundColor = "orange";
-//   }
-//   if (pScore > cScore) {
-//     scoreBoard.style.backgroundColor = "green";
-//   }
-//   if (pScore < cScore) {
-//     scoreBoard.style.backgroundColor = "red";
-//   }
-
-//   //scissors
-// } else if ( playerSelection === "scissors" && computerSelection === "scissors") {
-//   verdict = "TIE! Try again!";
-//   console.log(verdict);
-//   lastResult.textContent = "TIE! Try again!";
-//   lastResult.style.backgroundColor = "orange";
-//   scoreBoard.textContent = `The score is PLAYER : ${pScore} & COMPUTER: ${cScore}`;
-//   if (pScore === cScore) {
-//     scoreBoard.style.backgroundColor = "orange";
-//   }
-//   if (pScore > cScore) {
-//     scoreBoard.style.backgroundColor = "green";
-//   }
-//   if (pScore < cScore) {
-//     scoreBoard.style.backgroundColor = "red";
-//   }
-// } else if (playerSelection === "scissors" && computerSelection === "rock") {
-//   verdict = "You lose! You threw scissors and the computer threw rock";
-//   console.log(verdict);
-//   cScore++;
-//   lastResult.textContent =
-//     "You lose! You threw scissors and the computer threw rock";
-//   lastResult.style.backgroundColor = "red";
-//   scoreBoard.textContent = `The score is PLAYER : ${pScore} & COMPUTER: ${cScore}`;
-//   if (pScore === cScore) {
-//     scoreBoard.style.backgroundColor = "orange";
-//   }
-//   if (pScore > cScore) {
-//     scoreBoard.style.backgroundColor = "green";
-//   }
-//   if (pScore < cScore) {
-//     scoreBoard.style.backgroundColor = "red";
-//   }
-// } else if (playerSelection === "scissors" && computerSelection === "paper") {
-//   verdict = "You win! You threw rock and the computer threw scissors";
-//   console.log(verdict);
-//   pScore++;
-//   lastResult.textContent =
-//     "You win! You threw rock and the computer threw scissors";
-//   lastResult.style.backgroundColor = "green";
-//   scoreBoard.textContent = `The score is PLAYER : ${pScore} & COMPUTER: ${cScore}`;
-//   if (pScore === cScore) {
-//     scoreBoard.style.backgroundColor = "orange";
-//   }
-//   if (pScore > cScore) {
-//     scoreBoard.style.backgroundColor = "green";
-//   }
-//   if (pScore < cScore) {
-//     scoreBoard.style.backgroundColor = "red";
-//   }
-// }
