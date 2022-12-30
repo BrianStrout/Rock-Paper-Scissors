@@ -12,6 +12,8 @@
   --cooloG-light: #2a9d8f;
   --coolorOY-dark: #f4a261;
   --coolorOY-light: #ffe986;
+  --coolorOY-light-dimmed: #e5d58b;
+
   --coolorR: #e76f51;
 }
 * {
@@ -174,7 +176,7 @@
   transition: transform 0.4s ease-out;
 }
 .dictateDance {
-  animation: dictateWobble 1.5s linear 0.45s forwards;
+  animation: dictateWobble 1.2s linear 0s forwards;
 }
 @keyframes dictateWobble {
   0% {
@@ -184,25 +186,22 @@
   25% {
     transform: translate(50px, 10px);
   }
-  30% {
+  37.5% {
     transform: translate(-50px, 5px);
   }
-  40% {
+  50% {
     transform: translate(-20px, -40px);
   }
-  50% {
+  62.5% {
     transform: translate(20px, 35px);
   }
-  60% {
+  75% {
     transform: translate(-20px, 30px);
   }
 
-  80% {
+  99% {
     transform: translate(20px, -35px);
     opacity: 1;
-  }
-  81% {
-    opacity: 0;
   }
   100% {
     opacity: 0;
@@ -245,7 +244,7 @@
 }
 .computerAvatarHurt {
   margin-left: auto;
-  animation: hurtandshakeR 2s linear forwards;
+  animation: hurtandshakeR 1s linear forwards;
 }
 
 @keyframes hurtandshakeL {
@@ -318,7 +317,7 @@
 .console {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1rem 100px auto;
+  grid-template-rows: 1rem 100px 1fr;
   width: 100%;
   /* background-color: darkseagreen; */
 }
@@ -339,16 +338,50 @@
   justify-content: center;
   align-items: center;
 }
+.round {
+  color: black;
+  /* text-shadow: 1px 1px 10px var(--coolorOY-light),
+    -1px -1px 10px var(--coolorOY-light); */
+}
 .userBut {
-  background-color: var(--coolorR);
-  color: var(--coolorOY-light);
+  background-color: var(--coolorOY-light);
+
+  /* color: var(--coolorR); */
+  color: var(--coolorG-dark);
+  /* text-shadow: 1px 1px var(--cooloG-light); */
   border: 3px solid black;
   border-radius: 25%;
   height: 100px;
   width: 100px;
 }
+.userBut:active {
+  scale: 0.95;
+  border: 3px solid rgb(70, 69, 69);
+  background-color: var(--coolorOY-light-dimmed);
+}
 .userBut > h6 {
   font-size: 1.25rem;
+}
+
+.resetBox {
+  width: 100%;
+  /* background-color: #f4a261; */
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.resetBut {
+  background-color: var(--coolorOY-light);
+  color: var(--coolorR);
+  text-shadow: 1px 1px black;
+  border: 3px solid black;
+  border-radius: 15px;
+  height: 50px;
+  width: 100px;
+}
+.resetBut:active {
+  scale: 0.95;
+  background-color: var(--coolorOY-light-dimmed);
 }
 
 .whatsUp {

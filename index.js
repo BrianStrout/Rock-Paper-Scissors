@@ -27,12 +27,15 @@ let validThrow = true;
 let ready = true;
 
 function resetter() {
-  // console.log("reset activated");
+  console.log("reset activated");
   roundBoard.textContent = `Back for more!`;
   p1HealthBar.style.width = "100%";
   compHealthBar.style.width = "100%";
   pHealth = 100;
   cHealth = 100;
+  loserDiv.classList.remove("gameOverSlip");
+  winnerDiv.classList.remove("gameOverSlip");
+  ready = true;
 }
 
 function adjust(raw) {
@@ -109,6 +112,7 @@ function setDictate(winner) {
 
   dictate(winner);
 }
+
 function dictate(winner) {
   setTimeout(() => {
     dictateHeader.classList.remove("dictateOFFSCREEN");
@@ -122,8 +126,6 @@ function dictate(winner) {
 
 function japanimation(winner) {
   updateHealth(winner);
-
-  // dictate();
 }
 function updateHealth(winner) {
   switch (winner) {
@@ -157,14 +159,10 @@ function updateHealth(winner) {
 
   setTimeout(() => {
     goAgain();
-    // player1Avatar.classList.remove("player1Attack");
-    // computerAvatar.classList.remove("computerAttack");
   }, 3000);
 }
 
 function goAgain() {
-  // player1Avatar.classList.remove("player1Attack");
-  // computerAvatar.classList.remove("computerAttack");
   console.log("going again..");
   if (pHealth === 0 || cHealth === 0) {
     declareWinner();
@@ -174,7 +172,7 @@ function goAgain() {
     dictateHeader.classList.add("dictateOFFSCREEN");
     setTimeout(() => {
       dictateHeader.classList.remove("dictateDance");
-    }, 50);
+    }, 0);
   }
 }
 
@@ -240,13 +238,10 @@ function battle(playerSelection, computerSelection) {
   }
 }
 function round() {
-  // shoot();
   if (validThrow === true) {
     preBattle(hand, computerPlay());
   }
 }
-
-// Player selects move
 
 rock.addEventListener("click", function () {
   if (ready) {
@@ -279,6 +274,6 @@ scissors.addEventListener("click", function () {
 });
 
 resetBut.addEventListener("click", () => {
-  // console.log("c");
+  console.log("c");
   resetter();
 });
