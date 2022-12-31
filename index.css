@@ -41,7 +41,7 @@
   width: 95vw;
   max-width: 500px;
   height: 95vh;
-  max-height: 500px;
+  max-height: 800px;
   background-color: var(--coolorG-dark);
   align-items: baseline;
   border: 5px solid black;
