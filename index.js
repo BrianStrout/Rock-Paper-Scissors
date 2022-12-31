@@ -8,7 +8,6 @@ const lastResult = document.querySelector(".lastResult");
 const scoreBoard = document.querySelector(".score");
 const roundBoard = document.querySelector(".round");
 const declare = document.querySelector(".declare");
-
 const dictateHeader = document.getElementById("dictateHeader");
 const p1HealthBar = document.getElementById("p1HealthBar");
 const compHealthBar = document.getElementById("compHealthBar");
@@ -21,7 +20,6 @@ const computerImage = document.getElementById("computerImage");
 const winnerDiv = document.getElementById("winnerDiv");
 const loserDiv = document.getElementById("loserDiv");
 const resetBut = document.getElementById("r");
-
 let pScore = 0;
 let pHealth = 100;
 let cHealth = 100;
@@ -112,24 +110,19 @@ function setDictate(winner) {
       }, 1500);
       dictateHeader.textContent = "tie..";
       break;
-
     case "player":
       setTimeout(() => {
         dictateHeader.textContent = "HIT!";
       }, 1500);
-
       computerFace.src = "./images/face-sad.png";
       break;
-
     case "comp":
       setTimeout(() => {
         dictateHeader.textContent = "OOF!";
       }, 1500);
-
       player1Face.src = "./images/face-sad.png";
       break;
   }
-
   dictate(winner);
 }
 
