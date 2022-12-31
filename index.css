@@ -7,13 +7,11 @@
   --blackboard: #565656;
   --backyard: linear-gradient(hotpink, limegreen);
   --light-grey: rgb(183, 183, 183);
-
   --coolorG-dark: #264653;
   --cooloG-light: #2a9d8f;
   --coolorOY-dark: #f4a261;
   --coolorOY-light: #ffe986;
   --coolorOY-light-dimmed: #e5d58b;
-
   --coolorR: #e76f51;
 }
 * {
@@ -23,18 +21,17 @@
 }
 
 .body {
-  /* background: var(--backyard); */
 }
 
 .gameContainer {
+  /* background: red; */
   width: 100vw;
   height: 100vh;
   justify-content: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: var(--backyard); */
-  /* grid-template-columns: 1fr 4fr 1fr; */
+  overflow: hidden;
 }
 
 .gameFace {
@@ -43,8 +40,6 @@
   width: 95vw;
   height: 95vh;
   background-color: var(--coolorG-dark);
-  /* padding-left: 5%;
-  padding-right: 5%; */
   align-items: baseline;
   border: 5px solid black;
   border-radius: 10px;
@@ -52,34 +47,29 @@
 .titleTrack {
   position: relative;
   width: 100%;
-  /* background-color: blue; */
   height: 80px;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-bottom: #76323f; */
 }
 .titleTrack > h1 {
   margin: 0;
   display: inline-block;
   color: var(--coolorOY-light);
-  /* text-shadow: 1px 1px var(--coolorR); */
 }
 #subTitle {
   color: var(--coolorOY-dark);
   position: absolute;
   bottom: 0;
-
   right: 0;
   margin: 0;
 }
 
 .monitor {
+  position: relative;
   background-color: var(--blackboard);
-  /* width: 100%; */
   margin: 5px;
-  /* height: 85vw; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,7 +83,6 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  /* background-color: var(--coolorOY-dark); */
 }
 .winnerDiv {
   position: absolute;
@@ -126,7 +115,6 @@
   top: 5px;
   height: 2.5%;
   width: 45%;
-  /* border: 1px solid hotpink; */
   display: flex;
   background-color: var(--coolorR);
   align-items: center;
@@ -156,7 +144,6 @@
   margin-top: 10%;
   width: 90%;
   height: 90%;
-  /* border: 1px dotted hotpink; */
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -165,7 +152,6 @@
   z-index: 10;
   width: 100%;
   height: 100%;
-  /* background-color: purple; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -215,12 +201,12 @@
 
 #player1Avatar,
 #computerAvatar {
+  background-color: transparent;
   width: 80%;
   height: 80%;
 }
 .player1Avatar {
   margin-left: auto;
-  background-color: #76323f69;
   transform: translateX(-100vw);
   transition: transform 0.25s ease-out;
 }
@@ -235,7 +221,6 @@
 
 .computerAvatar {
   margin-right: auto;
-  background-color: white;
   transform: translateX(100vw);
   transition: transform 0.25s ease-out;
 }
@@ -245,6 +230,16 @@
 .computerAvatarHurt {
   margin-left: auto;
   animation: hurtandshakeR 1s linear forwards;
+}
+
+.avatarImages {
+  width: 100%;
+}
+.avatarFaces {
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+  left: 0;
 }
 
 @keyframes hurtandshakeL {
@@ -310,23 +305,19 @@
   }
 
   100% {
-    transform: rotate(-20deg) scale(75%) translate(20px, 40px);
+    transform: rotate(20deg) scale(75%) translate(20px, -40px);
   }
 }
 
 .console {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1rem 100px 1fr;
+  grid-template-rows: 100px 1fr;
   width: 100%;
-  /* background-color: darkseagreen; */
 }
 .controller {
-  /* background-color: brown; */
   width: 100%;
-  /* padding-top: 10%; */
   display: flex;
-
   gap: 10px;
   justify-content: center;
   align-items: center;
@@ -337,18 +328,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 0;
+  align-items: flex-end;
 }
 .round {
-  color: black;
-  /* text-shadow: 1px 1px 10px var(--coolorOY-light),
-    -1px -1px 10px var(--coolorOY-light); */
+  color: var(--coolorOY-light);
+  margin-bottom: 10px;
 }
 .userBut {
   background-color: var(--coolorOY-light);
-
-  /* color: var(--coolorR); */
   color: var(--coolorG-dark);
-  /* text-shadow: 1px 1px var(--cooloG-light); */
   border: 3px solid black;
   border-radius: 25%;
   height: 100px;
@@ -365,7 +355,6 @@
 
 .resetBox {
   width: 100%;
-  /* background-color: #f4a261; */
   margin-top: 10px;
   display: flex;
   justify-content: center;
@@ -384,14 +373,6 @@
   background-color: var(--coolorOY-light-dimmed);
 }
 
-.whatsUp {
-  /* width: 40%; */
-}
-.flexScore {
-  /* display: inline-block; */
-  /* justify-content: center; */
-  /* gap: 10px; */
-}
 .keepScore {
   display: inline-block;
   /* width: 40%; */

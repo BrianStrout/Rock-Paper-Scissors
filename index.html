@@ -18,55 +18,56 @@
           <div class="screen">
             <div id="winnerDiv" class="winnerDiv">WIN!</div>
             <div id="loserDiv" class="loserDiv">Lose!</div>
-
             <div id="p1HealthBox">
               <div id="p1HealthBar"></div>
             </div>
             <div id="compHealthBox">
               <div id="compHealthBar"></div>
             </div>
-
             <div class="fightStage">
               <div class="dictate">
                 <h1 id="dictateHeader" class="dictateOFFSCREEN"></h1>
               </div>
-              <div id="player1Avatar" class="player1Avatar"></div>
-              <div id="computerAvatar" class="computerAvatar"></div>
+              <div id="player1Avatar" class="player1Avatar">
+                <img id="player1Image" class="avatarImages" src="" />
+                <img
+                  id="player1Face"
+                  class="avatarFaces"
+                  src="./images/face-vampire.png"
+                />
+              </div>
+              <div id="computerAvatar" class="computerAvatar">
+                <img id="computerImage" class="avatarImages" src="" />
+                <img
+                  id="computerFace"
+                  class="avatarFaces"
+                  src="./images/face-drool.png"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="console">
           <div class="roundContainer">
             <p class="round"></p>
           </div>
+        </div>
+        <div class="console">
           <div class="controller">
-            <!-- <div class="buttons"> -->
             <button class="userBut" id="rock"><h6>Rock!</h6></button>
             <button class="userBut" id="paper"><h6>Paper!</h6></button>
             <button class="userBut" id="scissors"><h6>Scissors!</h6></button>
-            <!-- </div> -->
           </div>
-
           <div class="resetBox">
             <button id="r" class="resetBut">Reset</button>
           </div>
-
-          <!---->
           <div class="flexScore">
-            <div class="whatsUp">
-              <p class="lastResult"></p>
-            </div>
-            <div class="keepScore">
-              <p class="score"></p>
-            </div>
+            <p class="lastResult"></p>
           </div>
-          <!--flexscore-->
-          <div class="decl">
-            <p class="declare"></p>
+          <div class="keepScore">
+            <p class="score"></p>
           </div>
         </div>
-        <div>
-          <!--make results-->
+        <div class="decl">
+          <p class="declare"></p>
         </div>
       </div>
     </div>

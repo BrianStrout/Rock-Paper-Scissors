@@ -14,6 +14,10 @@ const p1HealthBar = document.getElementById("p1HealthBar");
 const compHealthBar = document.getElementById("compHealthBar");
 const player1Avatar = document.getElementById("player1Avatar");
 const computerAvatar = document.getElementById("computerAvatar");
+const player1Image = document.getElementById("player1Image");
+const player1Face = document.getElementById("player1Face");
+const computerFace = document.getElementById("computerFace");
+const computerImage = document.getElementById("computerImage");
 const winnerDiv = document.getElementById("winnerDiv");
 const loserDiv = document.getElementById("loserDiv");
 const resetBut = document.getElementById("r");
@@ -28,6 +32,7 @@ let ready = true;
 
 function resetter() {
   console.log("reset activated");
+  roundCount = 1;
   roundBoard.textContent = `Back for more!`;
   p1HealthBar.style.width = "100%";
   compHealthBar.style.width = "100%";
@@ -81,32 +86,47 @@ function computerPlay() {
   return compHand;
 }
 function dressAndGoPlayer(outfit) {
-  console.log("dressed up as" + outfit);
+  console.log(`left-${outfit}`);
 
-  player1Avatar.style.backgroundImage = "url('images/temprock.jpg')";
+  player1Image.src = `/images/left-${outfit}.png`;
+
   player1Avatar.classList.add("player1Attack");
 }
 function dressAndGoComputer(outfit) {
   // computerAvatar
-  computerAvatar.style.backgroundImage = "url('images/tempcomr.jpg')";
+  computerImage.src = `/images/right-${outfit}.png`;
+
   computerAvatar.classList.add("computerAttack");
 }
 function delegateDamage(winner) {
   setDictate(winner);
 }
+
 function setDictate(winner) {
   console.log(winner + "..settibng dictations");
   switch (winner) {
     case "tie":
+      setTimeout(() => {
+        player1Face.src = "./images/face-sad.png";
+        computerFace.src = "./images/face-sad.png";
+      }, 1500);
       dictateHeader.textContent = "tie..";
       break;
 
     case "player":
-      dictateHeader.textContent = "HIT!";
+      setTimeout(() => {
+        dictateHeader.textContent = "HIT!";
+      }, 1500);
+
+      computerFace.src = "./images/face-sad.png";
       break;
 
     case "comp":
-      dictateHeader.textContent = "OOF!";
+      setTimeout(() => {
+        dictateHeader.textContent = "OOF!";
+      }, 1500);
+
+      player1Face.src = "./images/face-sad.png";
       break;
   }
 
@@ -120,13 +140,10 @@ function dictate(winner) {
   }, 500);
 
   setTimeout(() => {
-    japanimation(winner);
+    updateHealth(winner);
   }, 1000);
 }
 
-function japanimation(winner) {
-  updateHealth(winner);
-}
 function updateHealth(winner) {
   switch (winner) {
     case "tie":
@@ -139,7 +156,7 @@ function updateHealth(winner) {
       compHealthBar.style.width = `${cHealth}%`;
       computerAvatar.classList.add("computerAvatarHurt");
       break;
-    //  flash compueter
+    //  flash computer
 
     case "comp":
       pHealth = pHealth - 25;
@@ -168,6 +185,9 @@ function goAgain() {
     declareWinner();
   } else {
     ready = true;
+
+    player1Face.src = "./images/face-vampire.png";
+    computerFace.src = "./images/face-drool.png";
 
     dictateHeader.classList.add("dictateOFFSCREEN");
     setTimeout(() => {
