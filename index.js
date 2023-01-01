@@ -172,6 +172,12 @@ function updateHealth(winner) {
   }, 3000);
 }
 
+function greyButtons() {
+  rock.classList.add("greyed");
+  paper.classList.add("greyed");
+  scissors.classList.add("greyed");
+}
+
 function goAgain() {
   console.log("going again..");
   if (pHealth === 0 || cHealth === 0) {
